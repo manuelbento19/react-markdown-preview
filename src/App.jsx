@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.scss';
-import ReactMarkdown from 'react-markdown';
+import {Container} from './components/Container';
+import { Markdown } from './components/Markdown';
 
 function App() {
   const [text,setText] = useState("")
@@ -10,16 +11,14 @@ function App() {
   return (
     <main>
       <h1>React Markdown Previewer</h1>
-      <div id='container'>
-        <aside>
-          <header>Editor</header>
-          <textarea onChange={onChange}></textarea>
-        </aside>
-        <section>
-          <header>Preview</header>
-          <ReactMarkdown id="markdown">{text}</ReactMarkdown>
-        </section>
-      </div>
+      <Container.Root>
+        <Container.Card title="Editor">
+          <Markdown.Editor edit={onChange}/>
+        </Container.Card>
+        <Container.Card title="Preview">
+          <Markdown.Preview text={text}/>
+        </Container.Card>
+      </Container.Root>
     </main>
   )
 }
