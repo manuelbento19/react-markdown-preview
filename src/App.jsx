@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import './App.scss';
 import ReactMarkdown from 'react-markdown';
 
 function App() {
@@ -10,12 +10,16 @@ function App() {
   return (
     <main>
       <h1>React Markdown Previewer</h1>
-      <aside>
-        <textarea name="" id="" cols="80" rows="20" onChange={onChange}></textarea>
-      </aside>
-      <section>
-        <ReactMarkdown>{text}</ReactMarkdown>
-      </section>
+      <div id='container'>
+        <aside>
+          <header>Editor</header>
+          <textarea onChange={onChange}></textarea>
+        </aside>
+        <section>
+          <header>Preview</header>
+          <ReactMarkdown id="markdown">{text}</ReactMarkdown>
+        </section>
+      </div>
     </main>
   )
 }
